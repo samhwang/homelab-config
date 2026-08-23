@@ -92,6 +92,10 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /mnt/vault/arr2/config/decluttarr/config.yaml:/app/config/config.yaml
       - /mnt/vault/arr2/config/decluttarr/logs:/app/logs
+    depends_on:
+      - radarr
+      - sonarr
+      - qbittorrent
     networks:
       - arr-stack
 
@@ -154,7 +158,7 @@ services:
       - WEBUI_PORTS=8081/tcp,8081/udp
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /mnt/vault/arr2/config/qbitorrent:/config
+      - /mnt/vault/arr2/config/qbittorrent:/config
       - /mnt/vault/arr2/data/torrents:/data/torrents
       - /mnt/vault/arr2/config/gluetun:/gluetun
     # ports:
@@ -162,6 +166,8 @@ services:
     # networks:
     #   - arr-stack
     #   - traefik-proxy
+    depends_on:
+      - gluetun
     network_mode: "service:gluetun"
 
   flaresolverr:
@@ -236,12 +242,12 @@ services:
     volumes:
       - /mnt/vault/arr2/config/gluetun:/gluetun
     environment:
-      - QBITTORRENT_SERVER=localhost  # IP Address of qbittorrent
+      - QBITTORRENT_SERVER=localhost # IP Address of qbittorrent
       - QBITTORRENT_PORT=8081
-      - HTTP_S=http                   # Select 'http' or 'https'
-      - GLUETUN_HOST=localhost        # IP or FQDN of gluetun control server
-      - GLUETUN_PORT=8000             # port of gluetun control server
-      - RECHECK_TIME=60               # number of seconds between checks
+      - HTTP_S=http # Select 'http' or 'https'
+      - GLUETUN_HOST=localhost # IP or FQDN of gluetun control server
+      - GLUETUN_PORT=8000 # port of gluetun control server
+      - RECHECK_TIME=60 # number of seconds between checks
       - PORT_FORWARDED=/gluetun/forwarded_port
       - TZ=Australia/Melbourne
 
