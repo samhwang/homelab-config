@@ -60,4 +60,6 @@ instances:
 download_clients:
   qbittorrent:
     - base_url: "http://gluetun:8081"
-      api_key: "{{ op://Private/BigBox - QBittorrent/API Key }}"
+      # api_key: "{{ op://Private/BigBox - QBittorrent/API Key }}"
+      username: "{{ op://Private/BigBox - QBittorrent/username }}"
+      password: "{{ op://Private/BigBox - QBittorrent/password }}"
