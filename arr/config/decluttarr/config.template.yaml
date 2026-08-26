@@ -1,8 +1,7 @@
 general:
-  log_level: DEBUG
+  log_level: VERBOSE
   test_run: false
   timer: 10
-  # request_timeout: 15 # Optional: timeout for all HTTP/API calls in seconds
   # ignored_download_clients: ["emulerr"]
   ssl_verification: true
   request_timeout: 15
@@ -17,9 +16,9 @@ job_defaults:
   max_concurrent_searches: 3
 
 jobs:
-  remove_bad_files:
+  remove_bad_files: true
     # keep_archives: true
-  remove_done_seeding:
+  remove_done_seeding: true
     # target_tags:
     #   - "Obsolete"
     # target_categories:
