@@ -242,10 +242,10 @@ services:
     volumes:
       - /mnt/vault/arr2/config/gluetun:/gluetun
     environment:
-      - QBITTORRENT_SERVER=localhost # IP Address of qbittorrent
+      - QBITTORRENT_SERVER=gluetun # IP Address of qbittorrent
       - QBITTORRENT_PORT=8081
       - HTTP_S=http # Select 'http' or 'https'
-      - GLUETUN_HOST=localhost # IP or FQDN of gluetun control server
+      - GLUETUN_HOST=gluetun # IP or FQDN of gluetun control server
       - GLUETUN_PORT=8000 # port of gluetun control server
       - RECHECK_TIME=60 # number of seconds between checks
       - PORT_FORWARDED=/gluetun/forwarded_port
