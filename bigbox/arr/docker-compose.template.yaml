@@ -99,6 +99,24 @@ services:
     networks:
       - arr-stack
 
+  recyclarr:
+    image: ghcr.io/recyclarr/recyclarr:8
+    container_name: recyclarr
+    restart: unless-stopped
+    environment:
+      - PUID=3002
+      - PGID=3002
+      - UMASK=002
+      - TZ=Australia/Melbourne
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /mnt/vault/arr2/config/recyclarr:/config
+    depends_on:
+      - radarr
+      - sonarr
+    networks:
+      - arr-stack
+
   ## JELLYFIN
   jellyfin:
     container_name: jellyfin
@@ -169,6 +187,7 @@ services:
     depends_on:
       - gluetun
     network_mode: "service:gluetun"
+    restart: unless-stopped
 
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr

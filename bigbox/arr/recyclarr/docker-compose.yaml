@@ -1,0 +1,12 @@
+# This purely exists just so I can use the recyclarr CLI
+# to generate configs. Can't be bothered installing it onto
+# my machine.
+
+services:
+  recyclarr:
+    image: ghcr.io/recyclarr/recyclarr:8
+    container_name: recyclarr
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ../config/recyclarr:/config
