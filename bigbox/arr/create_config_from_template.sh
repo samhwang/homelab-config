@@ -7,5 +7,8 @@
 echo "Creating decluttarr config"
 OP_ACCOUNT=my.1password.com op inject -i ./config/decluttarr/config.template.yaml -o ./config/decluttarr/config.yaml
 
+echo "Creating recyclarr secrets"
+OP_ACCOUNT=my.1password.com op inject -i ./config/recyclarr/secrets.template.yml -o ./config/recyclarr/secrets.yml
+
 echo "Creating arr stack config"
 OP_ACCOUNT=my.1password.com op inject -i ./docker-compose.template.yaml -o ./docker-compose.yaml
